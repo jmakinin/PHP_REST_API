@@ -23,8 +23,8 @@
     //check if there is any post
     if($num > 0) {
         //post array
-        $post_arr = array();
-        $post_arr['data'] = array();
+        $posts_arr = array();
+        $posts_arr['data'] = array();
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
@@ -38,17 +38,16 @@
                 'category_name' => $category_name
             );
 
-            //push to the 'data'
+            //push to 'data'
             array_push($posts_arr['data'], $post_item);
         }
 
         // tunr to json and output
 
-        echo json_encode($post_arr);
+        echo json_encode($posts_arr);
     }
     else{
         echo json_encode(
             array('message' => 'No Posts found')
         );
     }
-?>
